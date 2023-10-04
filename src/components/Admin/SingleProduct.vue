@@ -47,6 +47,10 @@ const getProductById = () => {
     .then((res) => {
       product.value = res.data.product;
       console.log("SingleProduct:", product.value);
+    })
+    .catch((err) => {
+      console.log("Error in getting product by id:", err);
+      Notification("Error occured", "danger");
     });
 };
 getProductById();

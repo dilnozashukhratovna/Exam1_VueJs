@@ -6,7 +6,7 @@
       <ol class="users-list">
         <li v-for="item in users" :key="item._id">
           <div class="list-item">
-            <p>{{ item.name }}  {{ item.surname }}</p>
+            <p>{{ item.name }} {{ item.surname }}</p>
             <button @click="showMore(item._id)">Show More</button>
           </div>
           <hr style="border: 1px solid palevioletred" />
@@ -28,9 +28,9 @@ const users = ref([]);
 const usersModal = ref();
 const userId = ref();
 
-  const showMore = (id) => {
-    router.push({ name: "single_user", params: { id: id } });
-  };
+const showMore = (id) => {
+  router.push({ name: "single_user", params: { id: id } });
+};
 
 const getAllUsers = () => {
   http
@@ -41,13 +41,9 @@ const getAllUsers = () => {
     })
     .catch((err) => {
       console.log("Error in getAllUsers", err);
+      Notification("Error occured", "danger");
     });
 };
-
-  const editUser = (id) => {
-    console.log("Id:", id);
-    usersModal.value.openModal(id.id);
-  };
 
 getAllUsers();
 </script>

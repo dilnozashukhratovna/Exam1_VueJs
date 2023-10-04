@@ -124,7 +124,7 @@ const saveForm = () => {
     })
     .then((res) => {
       router.push({ name: "products" });
-      Notification("New product successfully added", "success");
+      Notification("New product is successfully added", "success");
       console.log(res.data);
       forms.value = {};
     })

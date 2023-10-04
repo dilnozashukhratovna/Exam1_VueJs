@@ -41,6 +41,7 @@
       })
       .catch((err) => {
         console.log("Error in getAllProducts", err);
+        Notification("Error occured", "danger")
       });
   };
   

@@ -36,10 +36,16 @@ const user = ref();
 const usersModal = ref();
 
 const getUserById = () => {
-  http.get(`http://34.125.211.64:3300/api/users/${userId}`).then((res) => {
-    user.value = res.data.user;
-    console.log("SingleUser:", user.value);
-  });
+  http
+    .get(`http://34.125.211.64:3300/api/users/${userId}`)
+    .then((res) => {
+      user.value = res.data.user;
+      console.log("SingleUser:", user.value);
+    })
+    .catch((err) => {
+      console.log("Error in getting user by id:", err);
+      Notification("Error occured", "danger");
+    });
 };
 getUserById();
 
