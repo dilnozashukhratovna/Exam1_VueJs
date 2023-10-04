@@ -70,7 +70,7 @@ const forms = ref({
 
 const saveForm = () => {
   http
-    .post("http://34.125.211.64:3300/api/products/add", {
+    .post("http://34.125.211.64:3300/api/users/add", {
       name: forms.value.name,
       surname: forms.value.surname,
       age: forms.value.age,
@@ -78,8 +78,8 @@ const saveForm = () => {
       address: forms.value.address,
     })
     .then((res) => {
-      router.push({ name: "products" });
-      Notification("New product successfully added", "success");
+      router.push({ name: "users" });
+      Notification("New user successfully added", "success");
       console.log(res.data);
       forms.value = {};
     })
