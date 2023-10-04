@@ -4,14 +4,17 @@
     <button class="back" @click="back">
       <i class="fa-solid fa-xmark"></i>
     </button>
-    <h2>Product details with id <span>{{ product._id }}</span>:</h2>
+    <h2>
+      Product details with id <span>{{ product._id }}</span
+      >:
+    </h2>
+    <p><span>name:</span> {{ product.name }}</p>
     <p><span>brand:</span> {{ product.brand }}</p>
     <p><span>group:</span> {{ product.group }}</p>
     <p><span>price:</span> ${{ product.price }}</p>
     <p><span>arrival price:</span> ${{ product.arrival_price }}</p>
     <p><span>selling price:</span> ${{ product.selling_price }}</p>
     <p><span>description:</span> {{ product.description }}</p>
-    
 
     <div class="buttons">
       <button class="btn delete" @click="deleteProduct">

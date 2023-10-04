@@ -19,6 +19,8 @@ const superadmin = () => {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap");
+
 .box {
   width: 40%;
   height: 50%;
@@ -30,11 +32,12 @@ const superadmin = () => {
   display: grid;
   place-items: center;
   border-radius: 15px;
+  font-size: 30px;
 }
 
 button {
   width: 300px;
-  padding: 1px 15px;
+  padding: 2px 15px;
   color: #000;
 //   margin-bottom: 30px;
   border-radius: 15px;
@@ -42,7 +45,7 @@ button {
   color: white;
   font-family: "Sue Ellen Francisco", cursive;
   border: none;
-  font-size: 20px;
+  font-size: 23px;
   transition: all 0.2s linear;
   margin-top: 30px;
 }

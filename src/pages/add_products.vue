@@ -1,7 +1,7 @@
 <template>
   <app-modal v-model="dialog">
     <Form @submit="saveForm">
-      <h1>Add User</h1>
+      <h1>Add Product</h1>
 
       <Field
         rules="required"
@@ -15,37 +15,73 @@
       </Field>
       <Field
         rules="required"
-        :modelValue="forms.surname"
+        :modelValue="forms.brand"
         v-slot="{ errors }"
-        name="surname">
-        <input type="text" placeholder="LastName..." v-model="forms.surname" />
+        name="brand">
+        <input type="text" placeholder="Brand..." v-model="forms.brand" />
         <p style="color: crimson" v-if="errors && errors.length">
           {{ errors[0] }}
         </p>
       </Field>
       <Field
         rules="required"
-        :modelValue="forms.age"
+        :modelValue="forms.group"
         v-slot="{ errors }"
-        name="age">
-        <input type="number" placeholder="Age..." v-model="forms.age" />
+        name="group">
+        <input type="text" placeholder="Group..." v-model="forms.group" />
         <p style="color: crimson" v-if="errors && errors.length">
           {{ errors[0] }}
         </p>
       </Field>
-      <select v-model="forms.is_diploma">
-        <option :value="false">false</option>
-        <option :value="true">true</option>
-      </select>
       <Field
         rules="required"
-        :modelValue="forms.address"
+        :modelValue="forms.price"
         v-slot="{ errors }"
-        name="address">
+        name="price">
+        <input type="number" placeholder="Price..." v-model="forms.price" />
+        <p style="color: crimson" v-if="errors && errors.length">
+          {{ errors[0] }}
+        </p>
+      </Field>
+      <Field
+        rules="required"
+        :modelValue="forms.arrival_price"
+        v-slot="{ errors }"
+        name="arrival_price">
         <input
-          type="address"
-          placeholder="Address..."
-          v-model="forms.address" />
+          type="number"
+          placeholder="ArrivalPrice..."
+          v-model="forms.arrival_price" />
+        <p style="color: crimson" v-if="errors && errors.length">
+          {{ errors[0] }}
+        </p>
+      </Field>
+      <Field
+        rules="required"
+        :modelValue="forms.selling_price"
+        v-slot="{ errors }"
+        name="selling_price">
+        <input
+          type="number"
+          placeholder="SellingPrice..."
+          v-model="forms.selling_price" />
+        <p style="color: crimson" v-if="errors && errors.length">
+          {{ errors[0] }}
+        </p>
+      </Field>
+      <Field
+        rules="required"
+        :modelValue="forms.description"
+        v-slot="{ errors }"
+        name="description">
+        <textarea
+          type="text"
+          placeholder="Description..."
+          v-model="forms.description"></textarea>
+        <!-- <input
+        type="text"
+        placeholder="Description..."
+        v-model="forms.description" /> -->
         <p style="color: crimson" v-if="errors && errors.length">
           {{ errors[0] }}
         </p>
@@ -63,14 +99,16 @@ import { Form, Field } from "vee-validate";
 import http from "../plugins/axios";
 import { ref, watch } from "vue";
 const dialog = ref(false);
-const users = ref([]);
+const products = ref([]);
 
 const forms = ref({
   name: "",
-  surname: "",
-  age: null,
-  is_diploma: false,
-  address: "",
+  brand: "",
+  group: "",
+  price: null,
+  arrival_price: null,
+  selling_price: null,
+  description: "",
 });
 
 watch(dialog, (value=>{
@@ -81,20 +119,22 @@ watch(dialog, (value=>{
 
 const openModal = (value) => {
   if (value) forms.value = {...value};
-  console.log("Users value in open model:",  forms.value);
+  console.log("Products value in open model:",  forms.value);
   dialog.value = true;
 };
 
 const saveForm = () => {
-   http.patch(`http://34.125.211.64:3300/api/users/update/${forms.value._id}`, {
+   http.patch(`http://34.125.211.64:3300/api/products/update/${forms.value._id}`, {
       name: forms.value.name,
-      surname: forms.value.surname,
-      age: forms.value.age,
-      is_diploma: forms.value.is_diploma,
-      address: forms.value.address,
+      brand: forms.value.brand,
+      group: forms.value.group,
+      price: forms.value.price,
+      arrival_price: forms.value.arrival_price,
+      selling_price: forms.value.selling_price,
+      description: forms.value.description,
         }).then(res=>{
-            console.log("Edited user data:", res.data);
-            Notification("New user is edited successfully!", "success");
+            console.log("Edited product data:", res.data);
+            Notification("New product is edited successfully!", "success");
             dialog.value = false;
             forms.value = {};
             location.reload()
@@ -116,7 +156,7 @@ app-modal {
   align-items: center;
 }
 
-h2 {
+h1 {
   text-align: center;
   font-family: sans-serif;
 }
@@ -167,5 +207,21 @@ p {
   font-size: 15px;
   font-family: sans-serif;
   margin-top: 10px;
+}
+
+textarea {
+  padding: 10px 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  border: 1px solid #b8b2b2;
+  color: #605656;
+  outline: none;
+  height: 100px;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #605656;
+  font-family: sans-serif;
 }
 </style>
