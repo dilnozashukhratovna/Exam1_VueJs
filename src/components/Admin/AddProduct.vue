@@ -32,16 +32,57 @@
         {{ errors[0] }}
       </p>
     </Field>
-    <select v-model="forms.is_diploma">
-      <option :value="false">false</option>
-      <option :value="true">true</option>
-    </select>
     <Field
       rules="required"
-      :modelValue="forms.address"
+      :modelValue="forms.price"
       v-slot="{ errors }"
-      name="address">
-      <input type="address" placeholder="Address..." v-model="forms.address" />
+      name="price">
+      <input type="number" placeholder="Price..." v-model="forms.price" />
+      <p style="color: crimson" v-if="errors && errors.length">
+        {{ errors[0] }}
+      </p>
+    </Field>
+    <Field
+      rules="required"
+      :modelValue="forms.arrival_price"
+      v-slot="{ errors }"
+      name="arrival_price">
+      <input
+        type="number"
+        placeholder="ArrivalPrice..."
+        v-model="forms.arrival_price" />
+      <p style="color: crimson" v-if="errors && errors.length">
+        {{ errors[0] }}
+      </p>
+    </Field>
+    <Field
+      rules="required"
+      :modelValue="forms.selling_price"
+      v-slot="{ errors }"
+      name="selling_price">
+      <input
+        type="number"
+        placeholder="SellingPrice..."
+        v-model="forms.selling_price" />
+      <p style="color: crimson" v-if="errors && errors.length">
+        {{ errors[0] }}
+      </p>
+    </Field>
+    <Field
+      rules="required"
+      :modelValue="forms.description"
+      v-slot="{ errors }"
+      name="description">
+      <textarea
+        type="text"
+        placeholder="Description..."
+        v-model="forms.description"
+        
+        ></textarea>
+      <!-- <input
+        type="text"
+        placeholder="Description..."
+        v-model="forms.description" /> -->
       <p style="color: crimson" v-if="errors && errors.length">
         {{ errors[0] }}
       </p>
@@ -151,5 +192,21 @@ p {
   font-size: 15px;
   font-family: sans-serif;
   margin-top: 10px;
+}
+
+textarea {
+  padding: 10px 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  border: 1px solid #b8b2b2;
+  color: #605656;
+  outline: none;
+  height: 100px;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #605656;
+  font-family: sans-serif;
 }
 </style>
