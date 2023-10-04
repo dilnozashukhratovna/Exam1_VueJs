@@ -4,7 +4,10 @@
     <button class="back" @click="back">
       <i class="fa-solid fa-xmark"></i>
     </button>
-    <h2>User details with id {{ user._id }}:</h2>
+    <h2>
+      User details with id <span>{{ user._id }}</span
+      >:
+    </h2>
     <p><span>firstName:</span> {{ user.name }}</p>
     <p><span>lastName:</span> {{ user.surname }}</p>
     <p><span>Age:</span> {{ user.age }}</p>
