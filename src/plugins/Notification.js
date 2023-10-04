@@ -6,7 +6,7 @@ const Notification = (text, color) => {
     position: "top-right",
     type: color,
     transition: "bounce",
-    timeout: 3000,
+    timeout: 2000,
   });
 };
 

@@ -22,7 +22,7 @@
       </button>
     </div>
   </div>
-  <div v-else><h3>Loading...</h3></div>
+  <div v-else class="loading"><h1>Loading...</h1></div>
 </template>
 
 <script setup>
@@ -48,6 +48,7 @@ const getUserById = () => {
     .catch((err) => {
       console.log("Error in getting user by id:", err);
       Notification("Error occured", "danger");
+      router.push({name: "users"})
     });
 };
 getUserById();
@@ -87,6 +88,18 @@ const deleteUser = () => {
   flex-direction: column;
   border-radius: 10px;
   // position: relative;
+}
+
+.loading {
+  // border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  margin-top: 200px;
+  font-family: fantasy;
+  color: palevioletred;
 }
 
 span {

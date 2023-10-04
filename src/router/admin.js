@@ -1,3 +1,5 @@
+import not_found from "./not_found";
+
 export default {
   path: "/admin",
   name: "admin",
@@ -26,5 +28,6 @@ export default {
         return import("@/components/Admin/SingleProduct");
       },
     },
+    not_found,
   ],
 };

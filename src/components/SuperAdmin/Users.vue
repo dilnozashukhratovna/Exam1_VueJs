@@ -1,6 +1,5 @@
 <template>
-  <div class="user_table">
-    <add_user ref="usersModal" />
+  <div v-if="users">
     <h1>All Users</h1>
     <div class="users-box">
       <ol class="users-list">
@@ -14,6 +13,7 @@
       </ol>
     </div>
   </div>
+  <div v-else class="loading"><h1>Loading...</h1></div>
 </template>
 
 <script setup>
@@ -22,6 +22,7 @@ import Notification from "../../plugins/Notification";
 import { ref } from "vue";
 //   import add_user from "@/pages/add_user.vue";
 import { useRouter } from "vue-router";
+import not_found from "../../router/not_found";
 const router = useRouter();
 
 const users = ref([]);
@@ -40,6 +41,9 @@ const getAllUsers = () => {
       console.log("Users data:", users.value);
     })
     .catch((err) => {
+      if (err.response.status == "404") {
+        router.push({ name: "not_found" });
+      }
       console.log("Error in getAllUsers", err);
       Notification("Error occured", "danger");
     });
@@ -56,6 +60,18 @@ getAllUsers();
   //   border: 1px solid red;
   margin: auto;
   font-family: fantasy;
+}
+
+.loading {
+  // border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  margin-top: 200px;
+  font-family: fantasy;
+  color: palevioletred;
 }
 
 .users-list {
