@@ -29,19 +29,12 @@ const props = defineProps({
   items: {
     type: Array,
   },
-  id: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
 });
 
 const logout = () => {
-  // console.log(props.name);
-  // console.log(props.id);
-  // router.push({ name: props.name, params: { id: props.id } });
-  router.push({ name: "signin" });
+  localStorage.removeItem("token");
+  localStorage.removeItem("roles");
+  router.push({ name: "login" });
   console.log("logoutga kirdi");
 };
 </script>

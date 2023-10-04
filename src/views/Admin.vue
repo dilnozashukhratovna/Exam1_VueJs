@@ -1,8 +1,8 @@
 <template>
   <div class="box">
     <div class="left">
-      <h1>Super Admin Page</h1>
-      <Sidebar :items="items" name="superadmin" />
+      <h1>Admin Page</h1>
+      <Sidebar :items="items" name="admin" />
     </div>
     <div class="right">
       <router-view></router-view>
@@ -21,15 +21,15 @@ const route = useRoute();
 const items = ref([
   {
     id: 1,
-    path: `/users`,
-    title: "Users",
-    icon: "fa-solid fa-user",
+    path: `/products`,
+    title: "Products",
+    icon: "fa-brands fa-product-hunt",
   },
   {
     id: 2,
-    path: `/add_user`,
-    title: "Add User",
-    icon: "fa-solid fa-user-plus",
+    path: `/add_product`,
+    title: "Add Product",
+    icon: "fa-regular fa-square-plus",
   },
 ]);
 </script>
