@@ -1,6 +1,5 @@
 <template>
-  <div class="product_table">
-    <add_product ref="productsModal" />
+  <div class="product_table" style="overflow: auto">
     <h1>All Products</h1>
     <div class="products-box">
       <ol class="products-list">

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="users">
+  <div v-if="users" style="overflow: auto">
     <h1>All Users</h1>
     <div class="users-box">
       <ol class="users-list">
