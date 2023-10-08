@@ -35,7 +35,6 @@ const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("roles");
   router.push({ name: "login" });
-  console.log("logoutga kirdi");
 };
 </script>
 

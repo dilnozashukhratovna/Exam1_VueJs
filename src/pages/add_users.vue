@@ -81,7 +81,6 @@ watch(dialog, (value=>{
 
 const openModal = (value) => {
   if (value) forms.value = {...value};
-  console.log("Users value in open model:",  forms.value);
   dialog.value = true;
 };
 
@@ -93,7 +92,6 @@ const saveForm = () => {
       is_diploma: forms.value.is_diploma,
       address: forms.value.address,
         }).then(res=>{
-            console.log("Edited user data:", res.data);
             Notification("New user is edited successfully!", "success");
             dialog.value = false;
             forms.value = {};

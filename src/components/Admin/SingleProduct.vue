@@ -46,7 +46,6 @@ const getProductById = () => {
     .get(`http://34.125.211.64:3300/api/products/${productId}`)
     .then((res) => {
       product.value = res.data.product;
-      console.log("SingleProduct:", product.value);
     })
     .catch((err) => {
       console.log("Error in getting product by id:", err);
@@ -61,7 +60,6 @@ const back = () => {
 };
 
 const editProduct = (product) => {
-  console.log("Product id in edit button:", product);
   productsModal.value.openModal(product);
 };
 

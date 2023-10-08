@@ -43,7 +43,6 @@ const getUserById = () => {
     .get(`http://34.125.211.64:3300/api/users/${userId}`)
     .then((res) => {
       user.value = res.data.user;
-      console.log("SingleUser:", user.value);
     })
     .catch((err) => {
       console.log("Error in getting user by id:", err);
@@ -58,7 +57,6 @@ const back = () => {
 };
 
 const editUser = (user) => {
-  console.log("User id in edit button:", user);
   usersModal.value.openModal(user);
 };
 

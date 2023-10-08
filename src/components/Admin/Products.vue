@@ -34,17 +34,11 @@ const getAllProducts = () => {
     .get("http://34.125.211.64:3300/api/products")
     .then((res) => {
       products.value = res.data.products;
-      console.log("Products data:", products.value);
     })
     .catch((err) => {
       console.log("Error in getAllProducts", err);
       Notification("Error occured", "danger");
     });
-};
-
-const editProduct = (id) => {
-  console.log("Id:", id);
-  productsModal.value.openModal(id.id);
 };
 
 getAllProducts();

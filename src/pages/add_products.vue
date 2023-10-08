@@ -119,7 +119,6 @@ watch(dialog, (value=>{
 
 const openModal = (value) => {
   if (value) forms.value = {...value};
-  console.log("Products value in open model:",  forms.value);
   dialog.value = true;
 };
 
@@ -133,7 +132,6 @@ const saveForm = () => {
       selling_price: forms.value.selling_price,
       description: forms.value.description,
         }).then(res=>{
-            console.log("Edited product data:", res.data);
             Notification("New product is edited successfully!", "success");
             dialog.value = false;
             forms.value = {};

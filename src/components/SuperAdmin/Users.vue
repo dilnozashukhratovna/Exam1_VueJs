@@ -38,7 +38,6 @@ const getAllUsers = () => {
     .get("http://34.125.211.64:3300/api/users")
     .then((res) => {
       users.value = res.data.users;
-      console.log("Users data:", users.value);
     })
     .catch((err) => {
       if (err.response.status == "404") {

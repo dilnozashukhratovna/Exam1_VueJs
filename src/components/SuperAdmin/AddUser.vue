@@ -80,7 +80,6 @@ const saveForm = () => {
     .then((res) => {
       router.push({ name: "users" });
       Notification("New user successfully added", "success");
-      console.log(res.data);
       forms.value = {};
     })
     .catch((err) => {

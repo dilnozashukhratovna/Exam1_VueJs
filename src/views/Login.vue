@@ -55,9 +55,6 @@ const login = () => {
     })
     .then((res) => {
       const data = res.data;
-      console.log("Data:", data);
-      console.log("Token:", data.token);
-      console.log("Roles:", data.roles);
       if (data.token && data.roles) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("roles", JSON.stringify(data.roles));
